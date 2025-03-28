@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4460407 */
+  /* Color fonts */
+  src: 
+       url('iconfont.woff2?t=1711883621273') format('woff2'),
+       url('iconfont.woff?t=1711883621273') format('woff'),
+       url('iconfont.ttf?t=1711883621273') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tuichu:before {
+  content: "\e606";
+}
+
+.icon-express:before {
+  content: "\e610";
+}
+
+.icon-master:before {
+  content: "\e611";
+}
+
+.icon-union:before {
+  content: "\e612";
+}
+
+.icon-visa:before {
+  content: "\e613";
+}
+
+.icon-coin:before {
+  content: "\e609";
+}
+
+.icon-Apple-white:before {
+  content: "\e976";
+}
+
+.icon-Tiktok:before {
+  content: "\e60a";
+}
+
+.icon-Google:before {
+  content: "\e60b";
+}
+
+.icon-avatar2:before {
+  content: "\e60c";
+}
+
+.icon-avatar:before {
+  content: "\e60d";
+}
+
+.icon-Facebook:before {
+  content: "\e60e";
+}
+
+.icon-Apple:before {
+  content: "\e60f";
+}
+
+.icon-morentouxiang:before {
+  content: "\e62f";
+}
+
+.icon-APPxiazai:before {
+  content: "\e975";
+}
+

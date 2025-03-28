@@ -1,0 +1,28 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "baseUrl": ".",
+
+    "paths": {
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@components/*": ["./src/components/*"],
+      "@router/*": ["./src/router/*"],
+      "@views/*": ["./src/views/*"]
+    }
+  },
+  "include": [
+    "env.d.ts",
+    "typings/**/*",
+    "src/**/*",
+    "src/**/*.vue",
+    "src/**/*.ts",
+  ],
+  "exclude": ["src/**/__tests__/*"]
+}

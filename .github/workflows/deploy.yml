@@ -1,0 +1,45 @@
+name: 打包并发布
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: ==== 执行 npm-build 工作流 ====
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ==== 读取仓库内容 ====
+        uses: actions/checkout@v4
+      - name: ==== 设置node版本 ====
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+      - name: ==== 设置页面 ====
+        id: pages
+        uses: actions/configure-pages@v4
+      - name: ==== 项目部署 ====
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./unpackage/dist/build/web
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
