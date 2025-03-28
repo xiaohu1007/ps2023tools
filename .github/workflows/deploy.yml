@@ -17,29 +17,38 @@ jobs:
   build:
     name: ==== 执行 npm-build 工作流 ====
     runs-on: ubuntu-latest
-
     steps:
       - name: ==== 读取仓库内容 ====
         uses: actions/checkout@v4
-      - name: ==== 设置node版本 ====
+
+      - name: ==== 设置 Node.js 环境 ====
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: pnpm
+
+      - name: ==== 安装依赖 ====
+        run: pnpm install
+
+      - name: ==== 执行构建 ====
+        run: pnpm run build
+
       - name: ==== 设置页面 ====
         id: pages
         uses: actions/configure-pages@v4
-      - name: ==== 项目部署 ====
+
+      - name: ==== 上传构建产物 ====
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./unpackage/dist/build/web
+          path: ./dist
+
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
