@@ -25,13 +25,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: pnpm
+          cache: npm
 
       - name: ==== 安装依赖 ====
-        run: pnpm install
+        run: npm install
 
       - name: ==== 执行构建 ====
-        run: pnpm run build
+        run: npm run build
 
       - name: ==== 设置页面 ====
         id: pages
