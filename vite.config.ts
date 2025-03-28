@@ -17,7 +17,7 @@ export default defineConfig(({ mode, command }) => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
   return {
-    base: env.VITE_APP_PUBLIC_PATH || '/',
+    base: '/ps2023tools/',
     server: {
       host: true,
       port: 5000,
