@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@views/home/index.vue'
 
 const router = createRouter({
-  history: createWebHistory('/ps2023tools/'),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -23,16 +23,10 @@ const router = createRouter({
       ],
     },
     {
-      path: '/:pathMatch(.*)*',
+      path: '/:pathMatch(.*)*', // 通配符路由，匹配所有未定义的路径
       name: 'not-found',
-      redirect(to) {
-        return {
-          name: 'home',
-          params: to.params,
-          query: to.query,
-        }
-      },
-      // component:  defineAsyncComponent(() => import('../views/not-found.vue')),
+      // component: NotFoundView, // 如果有自定义 404 页面，可以在这里指定
+      redirect: '/', // 如果没有自定义 404 页面，可以重定向到首页
     },
   ],
 })
